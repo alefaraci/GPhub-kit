@@ -86,13 +86,13 @@ project/
 │   ├── lib_gpr.r                # R libraries
 │   ├── lib_gaussianprocesses.jl # Julia libraries
 │   └── lib_fitrgp.m             # MATLAB libraries
-└── data/                        # Benchmark data
-    ├── dataset_x.csv            # Dataset x csv file
-    ├── dataset_y.csv            # Dataset y csv file
-    ├── train_x.csv              # Train Set x csv file
-    ├── train_y.csv              # Train Set y csv file
-    ├── test_x.csv               # Test Set x csv file
-    └── test_y.csv               # Test Set y csv file
+├── data/                        # Benchmark data
+│   ├── dataset_x.csv            # Dataset x csv file
+│   ├── dataset_y.csv            # Dataset y csv file
+│   ├── train_x.csv              # Train Set x csv file
+│   ├── train_y.csv              # Train Set y csv file
+│   ├── test_x.csv               # Test Set x csv file
+│   └── test_y.csv               # Test Set y csv file
 └── results/                     # Rich console output
     ├── storage/                 # Parquet result files
     ├── img/                     # Publication-ready plots
