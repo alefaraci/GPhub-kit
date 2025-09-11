@@ -1,0 +1,50 @@
+line-length = 117
+indent-width = 4
+
+[lint]
+ignore = [
+    "A002",
+    "ANN401",
+    "INP001",
+    "N802",
+    "N803",
+    "N806",
+    "S101",
+    "PLR2004",
+    "E501",
+    "PGH003",
+    "ERA001",
+    "FBT003",
+    "PLR0913",
+    "TID252",
+    "PTH123",
+    "SIM115",
+    "COM812",
+    "S603",
+    "SLF001",
+    "FA102",
+    "NPY002",
+    "PTH118",
+    "PTH122",
+    "S607",
+    "PERF203",
+    "BLE001",
+]
+select = ["ALL"]
+fixable = ["ALL"]
+unfixable = ["F401"]
+
+
+[lint.pydocstyle]
+convention = "google"
+
+[lint.isort]
+force-to-top = ["src"]
+from-first = true
+length-sort = true
+
+[format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+docstring-code-line-length = "dynamic"

@@ -1,0 +1,69 @@
+[project]
+name = "gphubkit"
+version = "0.1.0"
+description = "A Python toolkit for benchmarking Gaussian Process (GP) libraries"
+readme = "README.md"
+authors = [
+    { name = "Alessio Faraci", email = "alessio.faraci@sigma-clermont.fr" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "colour>=0.1.5",
+    "matplotlib>=3.10.0",
+    "psutil>=6.1.1",
+    "pyaml>=25.1.0",
+    "pydoe>=0.3.8",
+    "rich>=13.9.4",
+    "scikit-learn>=1.6.1",
+    "scipy>=1.12.0",
+    "memory-profiler>=0.61.0",
+    "matlabengine>=25.1.2",
+    "juliacall>=0.9.27",
+    "rpy2>=3.6.2",
+    "polars>=1.33.0",
+    "rich-gradient>=0.3.3",
+    "click>=8.2.1",
+]
+
+[project.scripts]
+gphubkit = "gphubkit.__main__:app"
+
+[project.optional-dependencies]
+gpflow = ["gpflow>=2.9.2"]
+gpytorch = ["gpytorch>=1.13"]
+egobox = ["egobox>=0.25.1"]
+gpy = ["gpy>=1.13.2"]
+openturns = ["openturns>=1.24"]
+smt = ["smt[gpx]>=2.9.0"]
+tinygp = ["tinygp>=0.3.0", "optax>=0.2.4"]
+uqpy = ["uqpy>=4.1.6"]
+gpjax = ["gpjax>=0.9.3"]
+all = [
+    "gpflow>=2.9.2",
+    "gpytorch>=1.13",
+    "egobox>=0.25.1",
+    "gpy>=1.13.2",
+    "openturns>=1.24",
+    "smt[gpx]>=2.9.0",
+    "tinygp>=0.3.0",
+    "optax>=0.2.4",
+    "uqpy>=4.1.6",
+    "gpjax>=0.9.3",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "hypothesis>=6.123.11",
+    "pytest>=8.3.4",
+    "uv>=0.5.18",
+    "ruff>=0.9.1",
+    "pyright>=1.1.404",
+    "gphubkit[all,egobox,gpjax,gpy,gpytorch,openturns,smt]",
+]
+
+[tool.uv.sources]
+gphubkit = { workspace = true }
