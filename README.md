@@ -16,23 +16,17 @@
 
 It provides a unified platform for:
 
-- 🚀 **Multi-Language Execution**: Run GP libraries in `Python`, `R`, `Julia`, and `MATLAB` from a unified interface
-- 🎯 **Benchmarking**: Selected standard engineering benchmark functions
-- 📈 **Performance Metrics**: Probabilistic metrics and timing/memory profiling
-- 📊 **Data Management**: Synthetic data generation, dataset splitting
-- 🔄 **Automated Pipeline**: End-to-end benchmarking
-
+- **Multi-Language Execution**: Run GP libraries in `Python`, `R`, `Julia`, and `MATLAB` from a unified interface
+- **Benchmarking**: Selected standard engineering benchmarks
+- **Performance Metrics**: Probabilistic metrics and timing/memory profiling
+- **Data Management**: Synthetic data generation, dataset splitting
 
 
 #  Quick Start
 
 ## Command Line Interface
 
-**GPhub-kit** provides a CLI for all benchmarking operations that features:
-
-- ✨ **Rich console output** with progress indicators
-- 🎯 **Automatic project validation** and structure creation
-- 📝 **Template generation** for all supported languages
+**GPhub-kit** provides a CLI for all benchmarking operations.
 
 ![Application GIF](./img/cli.gif "Application Demo")
 
@@ -149,12 +143,12 @@ uv add "gphubkit[all]"
 
 Documentation for all modules is provided in the **[📚 Wiki](https://github.com/alefaraci/GPhub-kit/wiki)** of the repo:
 
-- **[🎯 Benchmark Module](https://github.com/alefaraci/GPhub-kit/Benchmark-module)**: Standard and custom benchmarks
-- **[📊 Data Module](https://github.com/alefaraci/GPhub-kit/Data-module)**: Dataset management, synthetic generation, file I/O
-- **[📈 Metrics Module](https://github.com/alefaraci/GPhub-kit/Metrics-module)**: Performance metrics and reporting
-- **[🚀 Launcher Module](https://github.com/alefaraci/GPhub-kit/Launcher-module)**: Cross-language execution engines and pipeline
-- **[📊 Plotter Module](https://github.com/alefaraci/GPhub-kit/Plotter-module)**: Visualization suite
-- **[🔧 Utils Module](https://github.com/alefaraci/GPhub-kit/Utils-module)**: Internal utilities and helpers
+- **[Benchmark Module](https://github.com/alefaraci/GPhub-kit/Benchmark-module)**: Standard and custom benchmarks
+- **[Data Module](https://github.com/alefaraci/GPhub-kit/Data-module)**: Dataset management, synthetic generation, file I/O
+- **[Metrics Module](https://github.com/alefaraci/GPhub-kit/Metrics-module)**: Performance metrics and reporting
+- **[Launcher Module](https://github.com/alefaraci/GPhub-kit/Launcher-module)**: Cross-language execution engines and pipeline
+- **[Plotter Module](https://github.com/alefaraci/GPhub-kit/Plotter-module)**: Visualization suite
+- **[Utils Module](https://github.com/alefaraci/GPhub-kit/Utils-module)**: Internal utilities and helpers
 
 
 
@@ -167,9 +161,9 @@ To clone and set up the development environment:
 ```bash
 git clone https://github.com/alefaraci/GPhub-kit.git
 cd GPhub-kit
-uv venv --python 3.12
+uv venv --python X.XX.X
 source .venv/bin/activate  # macOS/Linux
-uv add --dev gphubkit[all]
+uv add --dev "gphubkit[all]"
 
 # Test CLI installation
 gphubkit --help
