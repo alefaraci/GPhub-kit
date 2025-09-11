@@ -82,10 +82,11 @@ benchmark.postprocess()
 ```
 project/
 ├── scripts/                     # Library implementations
-│   ├── lib_scikit_learn.py      # Python libraries
-│   ├── lib_gpr.r                # R libraries
-│   ├── lib_gaussianprocesses.jl # Julia libraries
-│   └── lib_fitrgp.m             # MATLAB libraries
+│   ├── lib_GPyTorch.py          # Python libraries
+│   ├── lib_DiceKriging.r        # R libraries
+│   ├── lib_GaussianProcesses.jl # Julia libraries
+│   ├── lib_UQLab.m              # MATLAB libraries
+│   └── ...                      # Additional libraries
 ├── data/                        # Benchmark data
 │   ├── dataset_x.csv            # Dataset x csv file
 │   ├── dataset_y.csv            # Dataset y csv file
@@ -95,8 +96,12 @@ project/
 │   └── test_y.csv               # Test Set y csv file
 └── results/                     # Rich console output
     ├── storage/                 # Parquet result files
-    ├── img/                     # Publication-ready plots
-    └── report.log               # Comprehensive analysis
+    │   └── ...
+    ├── img/                     # Plots and visualizations
+    │   └── ...
+    ├── logger.log               # Execution log
+    └── report.log               # Analysis report
+
 ```
 
 ---
