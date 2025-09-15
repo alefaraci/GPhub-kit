@@ -193,5 +193,3 @@ This project has received funding from the [European Union’s Horizon 2020](htt
 # License
 
 Licensed under the [MIT license](https://github.com/alefaraci/GPhub-kitPro/blob/main/LICENSE).
-
----
