@@ -148,12 +148,12 @@ uv add "gphubkit[all]"
 
 Documentation for all modules is provided in the **[📚 Wiki](https://github.com/alefaraci/GPhub-kit/wiki)** of the repo:
 
-- **[Benchmark Module](https://github.com/alefaraci/GPhub-kit/Benchmark-module)**: Standard and custom benchmarks
-- **[Data Module](https://github.com/alefaraci/GPhub-kit/Data-module)**: Dataset management, synthetic generation, file I/O
-- **[Metrics Module](https://github.com/alefaraci/GPhub-kit/Metrics-module)**: Performance metrics and reporting
-- **[Launcher Module](https://github.com/alefaraci/GPhub-kit/Launcher-module)**: Cross-language execution engines and pipeline
-- **[Plotter Module](https://github.com/alefaraci/GPhub-kit/Plotter-module)**: Visualization suite
-- **[Utils Module](https://github.com/alefaraci/GPhub-kit/Utils-module)**: Internal utilities and helpers
+- **[Benchmark Module](https://github.com/alefaraci/GPhub-kit/wiki/Benchmark-module)**: Standard and custom benchmarks
+- **[Data Module](https://github.com/alefaraci/GPhub-kit//wiki/Data-module)**: Dataset management, synthetic generation, file I/O
+- **[Metrics Module](https://github.com/alefaraci/GPhub-kit/wiki/Metrics-module)**: Performance metrics and reporting
+- **[Launcher Module](https://github.com/alefaraci/GPhub-kit/wiki/Launcher-module)**: Cross-language execution engines and pipeline
+- **[Plotter Module](https://github.com/alefaraci/GPhub-kit/wiki/Plotter-module)**: Visualization suite
+- **[Utils Module](https://github.com/alefaraci/GPhub-kit/wiki/Utils-module)**: Internal utilities and helpers
 
 
 
