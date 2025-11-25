@@ -10,12 +10,8 @@ from rich.prompt import Prompt
 from rich.spinner import Spinner
 import click
 
-from gphubkit.benchmark.base import GPhubkitBenchmark
-import gphubkit as gpk
-
 from . import __version__, __app_name__
 from .utils import console
-from .utils.templates import tmpl_m, tmpl_r, tmpl_jl, tmpl_py
 
 
 def __wd_structure(working_dir: Path) -> None:
@@ -60,6 +56,8 @@ def __check_wd_structure() -> None:
 
 def __create_library_template(name: str, language: str) -> str:
     """Create a new library template."""
+    from .utils.templates import tmpl_m, tmpl_r, tmpl_jl, tmpl_py
+
     match language.lower():
         case "python" | "py":
             template, ext = tmpl_py, "py"
@@ -91,7 +89,7 @@ def __check_libraries() -> None:
         sys.exit(1)
 
 
-def __run_benchmark(bm: GPhubkitBenchmark) -> None:
+def __run_benchmark(bm) -> None:
     """Run and postprocess a benchmark."""
     bm.run()
     bm.postprocess()
@@ -163,6 +161,8 @@ def run() -> None:
 @app.command()
 def postprocess() -> None:
     """Postprocess GPhub-kit benchmark results."""
+    import gphubkit as gpk
+
     gpk.postprocess()
 
 
@@ -177,6 +177,8 @@ def bm(id: int) -> None:
         sys.exit(1)
 
     __check_libraries()
+
+    import gphubkit as gpk
 
     bm_class = getattr(gpk.benchmark, f"BM{id:02d}")
     benchmark = bm_class()
@@ -199,6 +201,9 @@ def bm(id: int) -> None:
 def composite(dim: int, size: int) -> None:
     """Run the Composite Shell benchmark."""
     __check_libraries()
+
+    import gphubkit as gpk
+
     benchmark = gpk.benchmark.CompositeShell(dim=dim, train_size=size)
     console.print("✅  [green]Benchmark [bold blue]'CompositeShell'[/] loaded successfully!\n")
     __run_benchmark(benchmark)
@@ -224,32 +229,29 @@ def custom(testsize: float) -> None:
         )
         sys.exit(1)
 
-    # Try to load pre-split data first
+    import gphubkit as gpk
+
     try:
         train_x, test_x, train_y, test_y = gpk.data.load(file_path=Path.cwd().resolve() / "data")
     except FileNotFoundError:
-        # Test size must be provided if data is not pre-split
         if testsize is None:
             testsize = float(
                 Prompt.ask(
                     "Custom benchmark requires the test size to be specified. Please provide a valid test size (e.g., 0.2 for 20i%)"
                 )
             )
-            # Validate the input
             while testsize <= 0 or testsize >= 1:
                 console.print(
                     f"[bold red][ERROR][/] [yellow]Test size [bold magenta]'{testsize}'[/] is not valid. Please provide a value between 0 and 1."
                 )
                 testsize = float(Prompt.ask("Please provide a valid test size between 0 and 1", default="0.2"))
 
-        # Split the dataset
         console.print(f"📊  [cyan]Splitting dataset with test_size={testsize}[/]")
         train_x, test_x, train_y, test_y = gpk.data.split_dataset(
             file_path=Path.cwd().resolve() / "data",
             test_size=testsize,
         )
 
-    # Create the benchmark
     benchmark = gpk.benchmark.Custom(
         id="custom",
         train_x=train_x,
