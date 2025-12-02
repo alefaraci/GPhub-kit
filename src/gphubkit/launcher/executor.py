@@ -256,25 +256,25 @@ def julia_executor(
         se.ACTION = action
 
         try:
-            # Capture Julia's output to buffers
+            # Use Pipe for stdout/stderr capture (Julia 1.7+ compatible)
+            # redirect_stdout() without args returns (rd, wr) pipe ends
             se.seval("""
-                using Base: IOBuffer
                 original_stdout = stdout
                 original_stderr = stderr
-                stdout_buffer = IOBuffer()
-                stderr_buffer = IOBuffer()
-                redirect_stdout(stdout_buffer)
-                redirect_stderr(stderr_buffer)
+                stdout_rd, stdout_wr = redirect_stdout()
+                stderr_rd, stderr_wr = redirect_stderr()
             """)
 
             se.include(script_path)
 
-            # Get captured output
+            # Restore streams and capture output
             se.seval("""
                 redirect_stdout(original_stdout)
                 redirect_stderr(original_stderr)
-                captured_stdout = String(take!(stdout_buffer))
-                captured_stderr = String(take!(stderr_buffer))
+                close(stdout_wr)
+                close(stderr_wr)
+                captured_stdout = String(read(stdout_rd))
+                captured_stderr = String(read(stderr_rd))
             """)
 
             # Log any captured output
@@ -291,8 +291,7 @@ def julia_executor(
         except Exception as e:
             err_msg = f"Julia execution error: {e}"
             logger.exception(err_msg)
-        finally:
-            # Restore original stdout/stderr
+            # Try to restore stdout/stderr on error
             try:
                 se.seval("""
                     redirect_stdout(original_stdout)
