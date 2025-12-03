@@ -75,10 +75,10 @@ def _adimensional_metrics_by_library(gp_libs: dict[str, "GPlibrary"], path: Path
     ax.set_xticks(angles[:-1])
     ax.set_xticklabels(data_labels)
     ax.tick_params(axis="x", pad=17.5)
-
+    plt.yticks(color="grey", size=8)
     plt.legend(loc="upper right", bbox_to_anchor=(1.55, 1.0))
     ax.grid(True)
-    plt.tight_layout()  # Adjust the rect parameter to make room for legend
+    plt.tight_layout()
     save(plt, path=path, filename="radar_by_library")
     plt.close()
 
@@ -97,11 +97,13 @@ def _metrics(gp_libs: dict, path: Path) -> None:
         "train_memory",
         "pred_memory",
     ]
-    libraries = gp_libs.keys()
+    libraries = sorted(gp_libs.keys())
     num_libs = len(libraries)
 
+    # for metric in metrics:
+    #     data = [[getattr(gp_libs[lib], metric.lower()) for lib in gp_libs]]
     for metric in metrics:
-        data = [[getattr(gp_libs[lib], metric.lower()) for lib in gp_libs]]
+        data = [[getattr(gp_libs[lib], metric.lower()) for lib in libraries]]
 
         match metric:
             case "R2":
@@ -135,11 +137,11 @@ def _metrics(gp_libs: dict, path: Path) -> None:
         ax.set_rlabel_position(0)  # Move radial labels away from plotted line
         ax.set_xticks(angles[:-1])  # Set category labels
         ax.set_xticklabels(libraries)
-        ax.tick_params(axis="x", pad=17.5)
+        ax.tick_params(axis="x", pad=30)
 
         # Set the range of values for radial axis
         ax.set_rlabel_position(-0.0)  # Move labels outside
-        plt.yticks(color="grey", size=10)
+        plt.yticks(color="grey", size=8)
 
         # Add the legend
         plt.legend(loc="upper right", bbox_to_anchor=(1.43, 1.1))
